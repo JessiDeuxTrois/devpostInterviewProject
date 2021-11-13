@@ -1,0 +1,12 @@
+<ul>
+  <li>
+    <% if user_signed_in? %>
+      <%= link_to "account".html_safe, user_index_path(id: current_user) %>
+    <% else %>
+      <%= link_to "sign in".html_safe, new_user_session_path %>
+    <% end %>
+  </li>
+  <li>
+    <%= link_to "competition".html_safe, competitions_path %>
+  </li>
+</ul>

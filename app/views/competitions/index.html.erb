@@ -1,0 +1,23 @@
+<h1>Competitions</h1>
+<div class="competitionsWrapper">
+  <% if @competitions.empty? %>
+    <h2>No competitions running, check back soon!</h2>
+  <% else %>
+    <% @competitions.each do |competition| %>
+      <p><%= competition.name %></p>
+      <div class="prizes">
+        <strong>Prizes:</strong>
+        <% @prizes.each do |prize| %>
+          <%= prize.name %>
+          <%= prize.dollar_value.round(2) %><br>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="newCompetition">
+  <% if user_signed_in? %>
+    <%= link_to "New Competition".html_safe, new_competition_url %>
+  <% end %>
+</div>

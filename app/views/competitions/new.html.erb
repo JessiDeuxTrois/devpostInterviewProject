@@ -1,0 +1,16 @@
+<div class="newCompetition">
+  <% if user_signed_in? %>
+    <h1>New Competition</h1>
+    <%= form_with model: @competitions do |f| %>
+      <%= f.label :name, "Name:" %>
+      <%= f.text_field :name, value: "" %><br><br>
+
+      <%= f.label :prize_name, "Prize Name:" %>
+      <%= f.text_field :prize_name, value: "" %><br>
+      <%= f.label :prize_value, "Prize Value:" %>
+      <%= f.text_field :prize_value, value: "" %><br><br>
+
+      <%= f.submit "Create Competition" %>
+    <% end %>
+  <% end %>
+</div>

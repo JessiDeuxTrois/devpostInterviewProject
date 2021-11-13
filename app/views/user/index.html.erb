@@ -1,0 +1,28 @@
+<% if user_signed_in? %>
+  <% total = 0 %>
+  <h1>Account</h1>
+  <div>
+    <h2>Customer Information</h2>
+    <p><strong>Name: </strong> <%= @users.name %> </p>
+    <p>
+      <strong>Competitions:</strong>
+      <% @competitions.each do |competition| %>
+        <%= competition.name %>
+      <% end %>
+    </p>
+    <p>
+      <strong>Prizes:</strong>
+      <% @prizes.each do |prize| %>
+        <%= prize.name %>
+        <%= prize.dollar_value.round(2) %><br>
+        <% total += prize.dollar_value.round(2) %>
+      <% end %>
+    </p>
+    <p>
+      <strong>Total:</strong>
+      <%= total %>
+    </p>
+  </div>
+<% else %>
+  <%= link_to "users".html_safe, user_session_path %>
+<% end %>
